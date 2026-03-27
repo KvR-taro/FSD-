@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling when clicking nav links! */
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Beautiful custom hero text color */
+.hero-title {
+  letter-spacing: -1.5px;
+}
+
+/* Enhancing standard bootstrap buttons */
+.hero-btn {
+  border-radius: 50px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(13, 110, 253, 0.4) !important;
+}
+
+.hero-btn-outline {
+  border-radius: 50px;
+  font-weight: 600;
+  border-width: 2px;
+  transition: transform 0.2s ease;
+}
+
+.hero-btn-outline:hover {
+  transform: translateY(-3px);
+}
+
+/* Styling the projects cards */
+.project-card {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+.card-img-wrapper {
+  height: 200px;
+}
+
+.project-img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.1);
+}
+
+.heading-underline {
+  height: 4px;
+  width: 60px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+}
+
+.contact-card {
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ensure the navbar links have a pointer */
+.nav-link {
+  cursor: pointer;
+}
