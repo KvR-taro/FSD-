@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9: Accessible Forms</title>
+    <!-- Use a simple Google Font for better readability -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="form-wrapper">
+        <!-- 
+            Semantic HTML: Using <form> and <fieldset> to group related elements. 
+            aria-labelledby: Links the group to its heading for screen readers.
+        -->
+        <form id="accessibleContactForm" action="#" aria-labelledby="form-heading">
+            <fieldset>
+                <legend id="form-heading">Contact Support</legend>
+                <p id="form-instructions">Please fill out this form to reach our accessibility support team. Required fields are marked with an asterisk (*).</p>
+
+                <div class="form-group">
+                    <!-- 
+                        The 'for' attribute strictly ties this label to the input with id="fullName". 
+                        If a user clicks the label, the input focuses automatically. 
+                    -->
+                    <label for="fullName">Full Name <span class="required" aria-hidden="true">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required aria-required="true" aria-describedby="nameHint">
+                    <!-- aria-describedby points to this hint text for screen readers -->
+                    <span id="nameHint" class="hint-text">Enter your first and last name.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailAddr">Email Address <span class="required" aria-hidden="true">*</span></label>
+                    <input type="email" id="emailAddr" name="emailAddr" required aria-required="true" autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="supportTopic">Topic</label>
+                    <!-- Select boxes must also have associated labels -->
+                    <select id="supportTopic" name="supportTopic">
+                        <option value="general">General Inquiry</option>
+                        <option value="technical">Technical Issue</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="userMessage">Your Message <span class="required" aria-hidden="true">*</span></label>
+                    <textarea id="userMessage" name="userMessage" rows="5" required aria-required="true"></textarea>
+                </div>
+
+                <!-- 
+                    Use actual <button> elements for actions (not <div> or <a>).
+                    Ensure there is clear visible text for speech control users.
+                -->
+                <button type="submit" class="submit-btn" aria-label="Submit Contact Form">Send Message</button>
+            </fieldset>
+        </form>
+
+        <!-- Use aria-live to announce dynamic changes to screen readers without moving focus -->
+        <div id="formFeedback" class="feedback-msg" aria-live="polite" hidden></div>
+    </main>
+
+    <script>
+        document.getElementById('accessibleContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const feedback = document.getElementById('formFeedback');
+            feedback.removeAttribute('hidden');
+            feedback.textContent = 'Thank you! Your message has been successfully sent. We will review it shortly.';
+            // Return focus to the top of the form for keyboard navigation
+            document.getElementById('form-heading').tabIndex = -1;
+            document.getElementById('form-heading').focus();
+        });
+    </script>
+</body>
+</html>

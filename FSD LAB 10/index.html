@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10: Three.js 3D Scene</title>
+    <!-- Importing Three.js via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1a2e; font-family: sans-serif; }
+        canvas { display: block; }
+        #overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 15px 25px;
+            border-radius: 8px;
+            border-left: 4px solid #e94560;
+            pointer-events: none; /* Let mouse clicks pass through to the canvas */
+        }
+        h1 { margin: 0 0 5px 0; font-size: 1.5rem; }
+        p { margin: 0; color: #aaa; }
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <h1>Lab 10: Three.js Integration</h1>
+        <p>A simple rotating 3D WebGL scene rendered with JavaScript.</p>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lab 7: A-Frame AR Scene</title>
+    <!-- A-Frame core library -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <!-- AR.js plugin for A-Frame -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; background-color: #000; font-family: sans-serif; }
+      #ar-instruction {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px 25px;
+        border-radius: 10px;
+        font-weight: bold;
+        z-index: 10;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      }
+    </style>
+  </head>
+  <!-- 
+    embedded: keeps A-Frame within the DOM 
+    arjs: configures AR tracking 
+  -->
+  <body style="margin: 0; overflow: hidden;">
+    <div id="ar-instruction">
+      📷 Point your camera at a "Hiro" marker to see the 3D object!
+    </div>
+
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+      
+      <!-- AR Marker Configuration -->
+      <a-marker preset="hiro">
+        <!-- 3D Object placed ON the marker -->
+        <a-box position="0 0.5 0" material="color: #4CC3D9; opacity: 0.8"
+               animation="property: rotation; to: 0 360 0; loop: true; dur: 3000">
+        </a-box>
+        
+        <a-sphere position="0 1.5 -1" radius="0.3" color="#EF2D5E"></a-sphere>
+        
+        <a-cylinder position="1 0.5 0" radius="0.2" height="1" color="#FFC65D"></a-cylinder>
+      </a-marker>
+
+      <!-- The AR Camera -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
